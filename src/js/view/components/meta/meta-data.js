@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import url from 'url'
 
-import config from '../../../utils/siteConfig'
-import ArticleMeta from './ArticleMeta'
-import WebsiteMeta from './WebsiteMeta'
-import AuthorMeta from './AuthorMeta'
+import config from '../../../config/site-config'
+import ArticleMeta from './article-meta'
+import WebsiteMeta from './website-meta'
+import AuthorMeta from './author-meta'
 
 /**
 * MetaData will generate all relevant meta data information incl.

@@ -1,5 +1,5 @@
 const path = require(`path`)
-const { postsPerPage } = require(`./src/utils/siteConfig`)
+const { postsPerPage } = require(`./src/js/config/site-config`)
 const { paginate } = require(`gatsby-awesome-pagination`)
 
 /**
@@ -58,12 +58,12 @@ exports.createPages = async ({ graphql, actions }) => {
     const pages = result.data.allGhostPage.edges
     const posts = result.data.allGhostPost.edges
 
-    // Load templates
-    const indexTemplate = path.resolve(`./src/templates/index.js`)
-    const tagsTemplate = path.resolve(`./src/templates/tag.js`)
-    const authorTemplate = path.resolve(`./src/templates/author.js`)
-    const pageTemplate = path.resolve(`./src/templates/page.js`)
-    const postTemplate = path.resolve(`./src/templates/post.js`)
+    // Load pages/dynamic
+    const indexTemplate = path.resolve(`./src/js/view/pages/index.js`)
+    const tagsTemplate = path.resolve(`./src/js/view/pages/tag.js`)
+    const authorTemplate = path.resolve(`./src/js/view/pages/author.js`)
+    const pageTemplate = path.resolve(`./src/js/view/pages/page.js`)
+    const postTemplate = path.resolve(`./src/js/view/pages/post.js`)
 
     // Create tag pages
     tags.forEach(({ node }) => {
@@ -73,7 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // a `/tag/:slug/` permalink.
         const url = `/tag/${node.slug}`
 
-        const items = Array.from({length: totalPosts})
+        const items = Array.from({ length: totalPosts })
 
         // Create pagination
         paginate({
@@ -81,10 +81,10 @@ exports.createPages = async ({ graphql, actions }) => {
             items: items,
             itemsPerPage: postsPerPage,
             component: tagsTemplate,
-            pathPrefix: ({ pageNumber }) => (pageNumber === 0) ? url : `${url}/page`,
+            pathPrefix: ({ pageNumber }) => ((pageNumber === 0) ? url : `${url}/page`),
             context: {
-                slug: node.slug
-            }
+                slug: node.slug,
+            },
         })
     })
 
@@ -96,7 +96,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // a `/author/:slug/` permalink.
         const url = `/author/${node.slug}`
 
-        const items = Array.from({length: totalPosts})
+        const items = Array.from({ length: totalPosts })
 
         // Create pagination
         paginate({
@@ -104,10 +104,10 @@ exports.createPages = async ({ graphql, actions }) => {
             items: items,
             itemsPerPage: postsPerPage,
             component: authorTemplate,
-            pathPrefix: ({ pageNumber }) => (pageNumber === 0) ? url : `${url}/page`,
+            pathPrefix: ({ pageNumber }) => ((pageNumber === 0) ? url : `${url}/page`),
             context: {
-                slug: node.slug
-            }
+                slug: node.slug,
+            },
         })
     })
 

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import url from 'url'
 
-import getAuthorProperties from './getAuthorProperties'
-import ImageMeta from './ImageMeta'
-import config from '../../../utils/siteConfig'
+import getAuthorProperties from './get-author-properties'
+import ImageMeta from './image-meta'
+import config from '../../../config/site-config'
 
 import { tags as tagsHelper } from '@tryghost/helpers'
 

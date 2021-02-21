@@ -1,7 +1,7 @@
 const path = require(`path`)
 
-const config = require(`./src/utils/siteConfig`)
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
+const config = require(`./src/js/config/site-config`)
+const generateRSSFeed = require(`./src/js/helper/generate-feed`)
 
 let ghostConfig
 
@@ -44,7 +44,7 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: path.join(__dirname, `src`, `pages`),
+                path: path.join(__dirname, `src`, `js`, `view`, `pages`),
                 name: `pages`,
             },
         },
@@ -53,7 +53,7 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: path.join(__dirname, `src`, `images`),
+                path: path.join(__dirname, `src`, `assets`, `images`),
                 name: `images`,
             },
         },
